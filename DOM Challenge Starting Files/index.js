@@ -1,3 +1,3 @@
-
-// document.firstElementChild.lastElementChild.querySelector("#Second").innerHTML = "TRy me";
-// alert("click");
+$("input").keypress(function(event){
+     $("h1").text(event.key);
+});
