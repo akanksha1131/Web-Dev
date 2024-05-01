@@ -17,88 +17,15 @@ var level=1;
 var correctOrder=[];
 var userOrder=[];
 
-$(document).on("keydown", function(){
-    alert("keypressed");
-    $("h1").text("Level "+level);
-    
-});
 
-
-
-$("#green").on("click", function(){
-    $("#green").addClass("pressed");
-    setTimeout(
-        function(){
-            $("#green").removeClass("pressed");
-        }, 200
-    );
-    var audio =new Audio("sounds/green.mp3");
-    audio.play();
-    userOrder.push(0);
-    console.log(" in f userOrder: "+userOrder);
-
-});
-
-$("#blue").on("click", function(){
-    $("#blue").addClass("pressed");
-    setTimeout(
-        function(){
-            $("#blue").removeClass("pressed");
-        }, 200
-    );
-    var audio =new Audio("sounds/blue.mp3");
-    audio.play();
-    userOrder.push(1);
-    console.log(" in f userOrder: "+userOrder);
-
-});
-
-$("#red").on("click", function(){
-    $("#red").addClass("pressed");
-    setTimeout(
-        function(){
-            $("#red").removeClass("pressed");
-        }, 200
-    );
-    var audio =new Audio("sounds/red.mp3");
-    audio.play();
-    userOrder.push(2);
-    console.log(" in f userOrder: "+userOrder);
-
-});
-$("#yellow").on("click", function(){
-    $("#yellow").addClass("pressed");
-    setTimeout(
-        function(){
-            $("#yellow").removeClass("pressed");
-        }, 200
-    );
-    var audio =new Audio("sounds/yellow.mp3");
-    audio.play();
-    userOrder.push(3);
-    console.log(" in f userOrder: "+userOrder);
-
-});
-
-
-
-
-function check(correctOrder, userOrder){
-    if(correctOrder.length!=userOrder.length){return false;}
-    var n= correctOrder.length;
-    for(var i=0;i<n;i++){
-        if(correctOrder[i]!=userOrder[i]){
-            return false;
-        }
-    }
-    return true;
-
-}
-
-
-function flashRandomButton( index){
-    alert("new flash");
+function flashRandomButton(){
+    var newUserOrder=[];
+    userOrder=newUserOrder;
+    var index=Math.floor(Math.random()*4);
     var id=button[index];
+    correctOrder.push(index);
+    console.log("Function: flashed new button");  
+    console.log("correctOrder: "+correctOrder);
     switch(index){
         case 0:
             var audio= new Audio("sounds/green.mp3");
@@ -133,36 +60,160 @@ function flashRandomButton( index){
 
     }
 
-    $(id).addClass("pressed");
+    $(id).addClass("pressedGame");
     console.log("")
     setTimeout(
         function(){
-            $(id).removeClass("pressed");
+            $(id).removeClass("pressedGame");
             }, 600
         );
-    console.log("Function: flashed new button");  
-}
-
-
-var continuegames=true;
-console.log("correct order: "+correctOrder);
-console.log("userOrder: "+userOrder);
-var flash=true;
-
-
-
-while(level<5 && flash==true){
-    
-    var index= Math.floor(Math.random()*3);
-    console.log("flashing new button ");
-    correctOrder.push(index);
-    console.log("correctorder: "+correctOrder);
-    flashRandomButton(index);
-    // complete code: wait for user to click buttons equal to correctorder length times
-        
     
     
 }
+
+function validate(userOrder){
+    if(userOrder.length==correctOrder.length){
+        var n=correctOrder.length;
+        var flash=true
+        for(var i=0; i<n; i++){
+            if(userOrder[i]!=correctOrder[i]){
+                flash=false;
+            }
+
+        }
+        if(flash==true){
+            changeheading();
+            flashRandomButton();
+        }
+        else{
+            gameOver();
+            return false;
+        }
+    }
+    else{
+        for(var i=0; i< userOrder.length; i++){
+            if(userOrder[i]!=correctOrder[i]){
+                flash=false;
+                gameOver();
+                return false;
+            }
+
+        }
+    }
+    return true;
+
+}
+
+
+
+function start(){
+    flashRandomButton();
+}
+
+function gameOver(){
+    var audio =new Audio("sounds/wrong.mp3");
+    audio.play();
+
+    console.log("after wrong audio");
+    $("h1").text("Game Over, Press any Key to play again! ");
+    level=1;
+    var newgame=[]
+    correctOrder=newgame;
+    
+}
+
+function changeheading(){
+    level=level+1;
+    $("h1").text("Level "+level);
+}
+
+
+
+$("#green").on("click", function(){
+    $("#green").addClass("pressed");
+    setTimeout(
+        function(){
+            $("#green").removeClass("pressed");
+        }, 200
+    );
+    userOrder.push(0);
+    console.log(" in f userOrder: "+userOrder);
+    if(validate(userOrder)==true){
+        var audio =new Audio("sounds/green.mp3");
+        audio.play();
+
+    }
+    
+    
+
+});
+
+$("#blue").on("click", function(){
+    $("#blue").addClass("pressed");
+    setTimeout(
+        function(){
+            $("#blue").removeClass("pressed");
+        }, 200
+    );
+    userOrder.push(1);
+    console.log(" in f userOrder: "+userOrder);
+    if(validate(userOrder)==true){
+        wrongAudio.play();
+        var audio =new Audio("sounds/blue.mp3");
+        audio.play();
+    }
+   
+    
+    
+
+});
+
+$("#red").on("click", function(){
+    $("#red").addClass("pressed");
+    setTimeout(
+        function(){
+            $("#red").removeClass("pressed");
+        }, 200
+    );
+    userOrder.push(2);
+    console.log(" in f userOrder: "+userOrder);
+    if(validate(userOrder)==true){
+        var audio =new Audio("sounds/red.mp3");
+        audio.play();
+    }
+
+    
+   
+    
+
+});
+$("#yellow").on("click", function(){
+    $("#yellow").addClass("pressed");
+    setTimeout(
+        function(){
+            $("#yellow").removeClass("pressed");
+        }, 200
+    );
+    userOrder.push(3);
+    console.log(" in f userOrder: "+userOrder);
+    if(validate(userOrder)==true){
+        var audio =new Audio("sounds/yellow.mp3");
+        audio.play();
+    }
+    
+   
+    
+
+});
+
+$(document).on("keydown", function(){
+    //alert("keypressed");
+    $("h1").text("Level "+level);
+    start();
+    
+});
+
+
 
 
 
