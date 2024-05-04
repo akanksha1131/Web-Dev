@@ -1,0 +1,22 @@
+
+
+<%- include('partials/header') %>
+
+<h1>Welcome to My Blog</h1>
+
+<% posts.forEach(post => { %>
+    <h3><%= post.blogTitle %></h3>
+    <p><%= post.blogID %></p>
+    
+    
+    <form action="/read" method="POST">
+        <input type="hidden" name="blogID" value= <%= post.blogID %>>
+        <input type="submit" value="Read Post">
+      </form>  
+ 
+    
+    
+
+<% }) %>
+
+<%- include('partials/footer') %>

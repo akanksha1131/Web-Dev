@@ -1,0 +1,16 @@
+<%- include('partials/header') %>
+
+<h1>Create Blog Post </h1>
+
+    <form action="/write" method="POST">
+        
+        <input type="text" id="myInputField1" name="blogTitle" placeholder="Enter Blog Title">
+        <input type="text" id="myInputField2" name="blogContent" placeholder="Enter Blog Content">
+
+        <input type="submit" value="Create Post">
+        
+    </form>    
+    
+
+
+<%- include('partials/footer') %>

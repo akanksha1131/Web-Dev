@@ -1,0 +1,52 @@
+
+
+<%- include('partials/header') %>
+
+<!-- <h1 class="heading">Welcome to My Blog</h1>
+
+<% posts.forEach(post => { %>
+    <div class="blog-post">
+        <h3 class="subheading"><%= post.blogTitle %></h3>
+        
+        
+        <form action="/read" method="POST">
+            <input type="hidden" name="blogID" value= <%= post.blogID %>>
+            <input type="submit" class="button2"  value="Read Post" >
+        </form>
+    </div>
+<% }) %> -->
+
+
+
+
+
+
+
+
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            <% posts.forEach(post => { %>
+                <div class="post-preview">
+                    <a href="/read">
+                        <h2 class="post-title"><%= post.blogTitle %></h2>
+                    </a>
+                    <form action="/read" method="POST">
+                        <input type="hidden" name="blogID" value= <%= post.blogID %>>
+                        <input type="submit" class="button2"  value="Read Post" >
+                    </form>
+                </div>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+                <% }) %>
+                <!-- Pager-->
+
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer') %>    
+
+    <!-- <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div> -->

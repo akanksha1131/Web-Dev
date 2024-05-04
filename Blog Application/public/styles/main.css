@@ -1,0 +1,139 @@
+/* Reset default browser styles */
+html, body, header, footer, nav, ul, li, h1, h2, h3, p, form, input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.heading {
+    font-size: 50px;
+    font-weight: bold;
+    color: #6e3737;
+    margin-bottom: 20px; /* Adjust the margin as needed */
+    padding-bottom: 10px; /* Add padding to separate the text from the border */
+}
+
+.subheading {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    max-width: calc(100% - 130px); /* Adjust maximum width to accommodate button */
+    word-wrap: break-word; /* Allow wrapping if text exceeds maximum width */
+}
+
+.button2 {
+    top: 30px; /* Adjust as needed */
+    right: 50px; /* Set distance from right border */
+}
+
+
+
+.heading2 {
+    font-size: 35px;
+    font-weight: bold;
+    color: #ad6666;
+    margin-bottom: 40px; /* Adjust the margin as needed */
+    padding-bottom: 10px; /* Add padding to separate the text from the border */
+}
+
+
+
+
+.freeman-regular {
+    font-family: "Freeman", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+/* Body styles */
+body {
+    font-family: "Freeman", sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+/* Header styles */
+header {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Main styles */
+main {
+    padding: 20px;
+}
+
+/* Footer styles */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+}
+
+
+/* Form styles */
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="submit"] {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #555;
+}
+
+
+
+/* Blog post styles */
+.blog-post {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+}
+
+
+.blog-post h2 {
+    color: #333;
+}
+
+.blog-post p {
+    color: #555;
+}

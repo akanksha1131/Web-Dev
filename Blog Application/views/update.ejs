@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+
+<h1 class="heading2">Update Blog Post </h1>
+
+    <form action="/updatepost" method="POST">
+        <h3><%= post.blogTitle %></h3>
+        <p><%= post.blogContent %></p>
+       
+        <input type="text" id="myInputField1" name="newBlogTitle" value="<%= post.blogTitle %>" >
+        <input type="text" id="myInputField2" name="newBlogContent" value="<%= post.blogContent %>">
+
+
+        <input type="hidden" name="blogID" value= <%= post.blogID %>>
+        <input type="submit" value="Update Post">
+    </form>    
+    
+
+
+<%- include('partials/footer') %>
