@@ -1,11 +1,13 @@
 import express from "express";
 import bodyParser from "body-parser";
+import axios from "axios";
 var allPosts=[];
 var ID = 1000;
 const port=3000;
 const app=express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
+
 
 function printAllPosts(){
     for(var i=0; i<allPosts.length;i++){
@@ -92,6 +94,19 @@ app.post("/delete", (req,res) => {
 
 app.get("/write", (req,res)=>{
     res.render("write.ejs");
+});
+
+app.get("/joke", async (req,res)=>{
+    try{
+        const response=await axios.get("https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit");
+        console.log("/joke called:        "+response.data.setup+" "+response.data.delivery);
+        res.render("joke.ejs", {"setup":response.data.setup , "delivery":response.data.delivery});
+    }
+    catch(error){
+        console.error("failed", error.message);
+        res.status(500).send("errro joke");
+    }
+    
 });
 
 app.get("/", (req,res)=>{

@@ -1,6 +1,21 @@
 <%- include('partials/header') %>
 
-<h1>Create Blog Post </h1>
+
+
+
+     <header class="masthead" style="background-image: url('images/headerimg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1>Write A Blog Post</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- <h1>Create Blog Post </h1>
 
     <form action="/write" method="POST">
         
@@ -9,8 +24,36 @@
 
         <input type="submit" value="Create Post">
         
-    </form>    
+    </form>    -->
     
+    <div class="mb-4">
+        
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <form action="/write" method="POST">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+            
+                    <input type="text" class="long-input" id="myInputField1" name="blogTitle" placeholder="Enter Blog Title">
+                </div>
+                <br>
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                
+                    <input type="text" class="non-resize-input" id="myInputField2" name="blogContent" placeholder="Enter Blog Content">
+                </div>
+                <br>
+                <div class="d-flex justify-content-end mb-4">
+            
+                <input type="submit" class="btn btn-primary text-uppercase" value="Create Post">
+                </div>
+
+            </form>  
+
+            </div>
+        </div>
+  
+    </div>
+    
+
 
 
 <%- include('partials/footer') %>
